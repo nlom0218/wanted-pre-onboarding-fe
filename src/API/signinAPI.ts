@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const signUp = async (email: string, password: string) => {
+const signinAPI = async (email: string, password: string) => {
   let token;
   let error;
   try {
     const res = await axios.post(
-      "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signup",
+      "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin",
       {
         email,
         password,
@@ -20,9 +20,9 @@ const signUp = async (email: string, password: string) => {
     error = false;
   } catch (error) {
     token = false;
-    error = "이미 가입되어 있는 계정입니다😅";
+    error = "이메일 또는 비밀번호가 틀립니다😅";
   }
   return [token, error];
 };
 
-export default signUp;
+export default signinAPI;

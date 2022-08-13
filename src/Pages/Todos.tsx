@@ -1,6 +1,6 @@
 import * as React from "react";
-import createTodo from "../API/createTodo";
-import getTodos from "../API/getTodos";
+import createTodoAPI from "../API/createTodoAPI";
+import getTodosAPI from "../API/getTodosAPI";
 import deleteTodoAPI from "../API/deleteTodoAPI";
 import updateTodoAPI from "../API/updateTodoAPI";
 
@@ -8,7 +8,7 @@ const Todos = () => {
   const [todos, setTodos] = React.useState();
   console.log(todos);
   const create = async () => {
-    const data = await createTodo(
+    const data = await createTodoAPI(
       "공부하기",
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
     );
@@ -17,7 +17,7 @@ const Todos = () => {
 
   const update = async () => {
     const data = await updateTodoAPI(
-      455,
+      457,
       "수정",
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o",
       false
@@ -27,14 +27,14 @@ const Todos = () => {
 
   const deleteTodo = async () => {
     await deleteTodoAPI(
-      455,
+      457,
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
     );
   };
 
   React.useEffect(() => {
     const getTodo = async () => {
-      const todos = await getTodos(
+      const todos = await getTodosAPI(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
       );
       setTodos(todos);

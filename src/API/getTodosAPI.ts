@@ -1,16 +1,12 @@
 import axios from "axios";
 
-const createTodo = async (todo: string, token: string) => {
+const getTodosAPI = async (token: string) => {
   try {
-    const res = await axios.post(
+    const res = await axios.get(
       "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/todos",
-      {
-        todo,
-      },
       {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       }
     );
@@ -18,4 +14,4 @@ const createTodo = async (todo: string, token: string) => {
   } catch (error) {}
 };
 
-export default createTodo;
+export default getTodosAPI;
