@@ -3,7 +3,7 @@ import signIn from "../API/signin";
 
 const Login = () => {
   const onClick = async () => {
-    const [token, error] = await signIn("hello@hello.com", "hellohello");
+    const [token, error] = await signIn("hel@hedddllo.com", "heldfslohello");
     console.log(token, error);
   };
   return <div onClick={onClick}>Login</div>;
