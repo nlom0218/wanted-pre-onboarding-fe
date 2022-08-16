@@ -1,10 +1,10 @@
-const LOGIN = "/signin";
-const CREATEACCOUNT = "/signup";
+const SIGNIN = "/signin";
+const SIGNUP = "/signup";
 const TODOS = "/todos";
 
 const router = {
-  login: LOGIN,
-  createAccount: CREATEACCOUNT,
+  signin: SIGNIN,
+  signup: SIGNUP,
   todos: TODOS,
 };
 

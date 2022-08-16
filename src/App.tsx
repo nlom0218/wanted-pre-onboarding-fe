@@ -7,8 +7,8 @@ import router from "./router";
 function App() {
   return (
     <Routes>
-      <Route path={router.login} element={<Signin />} />
-      <Route path={router.createAccount} element={<Signup />} />
+      <Route path={router.signin} element={<Signin />} />
+      <Route path={router.signup} element={<Signup />} />
       <Route path={router.todos} element={<Todos />} />
     </Routes>
   );
