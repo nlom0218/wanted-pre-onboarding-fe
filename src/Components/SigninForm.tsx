@@ -24,11 +24,15 @@ const SigninForm = ({ submit, type }: ISigninForm) => {
         type="text"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        autoComplete="off"
+        placeholder="Enter your email."
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        autoComplete="off"
+        placeholder="Enter password"
       />
       <input
         type="submit"
