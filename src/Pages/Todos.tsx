@@ -1,11 +1,13 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import createTodoAPI from "../API/createTodoAPI";
 import getTodosAPI from "../API/getTodosAPI";
 import deleteTodoAPI from "../API/deleteTodoAPI";
 import updateTodoAPI from "../API/updateTodoAPI";
+import { useNavigate } from "react-router-dom";
+import router from "../router";
 
 const Todos = () => {
-  const [todos, setTodos] = React.useState();
+  const [todos, setTodos] = useState();
   console.log(todos);
   const create = async () => {
     const data = await createTodoAPI(
@@ -32,7 +34,7 @@ const Todos = () => {
     );
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const getTodo = async () => {
       const todos = await getTodosAPI(
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
@@ -43,6 +45,14 @@ const Todos = () => {
     return () => {
       getTodo();
     };
+  }, []);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!Boolean(localStorage.getItem("token"))) {
+      navigate(router.signin);
+    }
   }, []);
 
   return (
