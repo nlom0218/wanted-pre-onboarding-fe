@@ -2,7 +2,7 @@ import axios from "axios";
 
 const signinAPI = async (email: string, password: string) => {
   let token;
-  let error;
+  let errorMsg;
   try {
     const res = await axios.post(
       "https://5co7shqbsf.execute-api.ap-northeast-2.amazonaws.com/production/auth/signin",
@@ -17,12 +17,12 @@ const signinAPI = async (email: string, password: string) => {
       }
     );
     token = res.data.access_token;
-    error = false;
+    errorMsg = false;
   } catch (error) {
     token = false;
-    error = "이메일 또는 비밀번호가 틀립니다😅";
+    errorMsg = "이메일 또는 비밀번호가 틀립니다😅";
   }
-  return [token, error];
+  return [token, errorMsg];
 };
 
 export default signinAPI;
