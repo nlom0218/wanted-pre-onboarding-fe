@@ -1,50 +1,34 @@
-import React, { useEffect, useState } from "react";
-import createTodoAPI from "../API/createTodoAPI";
+import { useEffect, useState } from "react";
 import getTodosAPI from "../API/getTodosAPI";
-import deleteTodoAPI from "../API/deleteTodoAPI";
-import updateTodoAPI from "../API/updateTodoAPI";
 import { useNavigate } from "react-router-dom";
 import router from "../router";
+import Todo from "../Components/Todo";
+
+export interface ITodos {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
+}
 
 const Todos = () => {
-  const [todos, setTodos] = useState();
-  console.log(todos);
-  const create = async () => {
-    const data = await createTodoAPI(
-      "공부하기",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
-    );
-    console.log(data);
-  };
-
-  const update = async () => {
-    const data = await updateTodoAPI(
-      457,
-      "수정",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o",
-      false
-    );
-    console.log(data);
-  };
-
-  const deleteTodo = async () => {
-    await deleteTodoAPI(
-      457,
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
-    );
-  };
+  const [todos, setTodos] = useState<ITodos[]>();
+  // const create = async () => {
+  //   const data = await createTodoAPI(
+  //     "공부하기2",
+  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im15ZW1haWxAZW1haWwuY29tIiwic3ViIjo2NjIsImlhdCI6MTY2MDY0MzMwMiwiZXhwIjoxNjYxMjQ4MTAyfQ.PBqC9JNL7bJNreqZ2IPv8v9I_XaVeZL8jGYwF_oAlps"
+  //   );
+  //   console.log(data);
+  // };
 
   useEffect(() => {
     const getTodo = async () => {
-      const todos = await getTodosAPI(
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
-      );
+      const token = localStorage.getItem("token");
+      if (!token) return;
+      const todos = await getTodosAPI(token);
       setTodos(todos);
     };
     getTodo();
-    return () => {
-      getTodo();
-    };
   }, []);
 
   const navigate = useNavigate();
@@ -57,9 +41,10 @@ const Todos = () => {
 
   return (
     <div>
-      <button onClick={create}>create todo</button>
-      <button onClick={update}>update todo</button>
-      <button onClick={deleteTodo}>delete todo</button>
+      {todos &&
+        todos.map((item) => {
+          return <Todo key={item.id} {...item} />;
+        })}
     </div>
   );
 };
