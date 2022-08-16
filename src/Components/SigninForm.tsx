@@ -10,14 +10,26 @@ interface ISigninForm {
 const SigninForm = ({ submit, type }: ISigninForm) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const onSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
-    const [token, error] = await signinAPI(email, password);
-    const [token2, error2] = await signupAPI(
-      "helldddo@hello.com",
-      "hellohello"
-    );
+
+    if (type === "SIGN_IN") {
+      const [token, errorMsg] = await signinAPI(email, password);
+      if (token) localStorage.setItem("token", token);
+      if (errorMsg) window.alert(errorMsg);
+    }
+
+    if (type === "SIGN_UP") {
+      const [token, error] = await signupAPI(email, password);
+      if (token) {
+        localStorage.setItem("token", token);
+      } else if (error) {
+        window.alert(error);
+      }
+    }
   };
+
   return (
     <form onSubmit={onSubmitForm}>
       <input
@@ -25,7 +37,7 @@ const SigninForm = ({ submit, type }: ISigninForm) => {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         autoComplete="off"
-        placeholder="Enter your email."
+        placeholder="Enter your email"
       />
       <input
         type="password"
