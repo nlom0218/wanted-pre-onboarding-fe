@@ -1,12 +1,12 @@
-import * as React from "react";
-import signupAPI from "../API/signupAPI";
+import React from "react";
+import SigninForm from "../Components/SigninForm";
 
 const Signup = () => {
-  const onClick = async () => {
-    const [token, error] = await signupAPI("helldddo@hello.com", "hellohello");
-    console.log(token, error);
-  };
-  return <div onClick={onClick}>Signup</div>;
+  return (
+    <div>
+      <SigninForm submit="Sign up & Sign in" type="SIGN_UP" />
+    </div>
+  );
 };
 
 export default Signup;

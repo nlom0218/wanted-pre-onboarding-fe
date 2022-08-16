@@ -1,5 +1,5 @@
-const LOGIN = "/login";
-const CREATEACCOUNT = "/create-account";
+const LOGIN = "/signin";
+const CREATEACCOUNT = "/signup";
 const TODOS = "/todos";
 
 const router = {
