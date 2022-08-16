@@ -39,6 +39,12 @@ const SigninForm = ({ submit, type }: ISigninForm) => {
     }
   }, [token]);
 
+  useEffect(() => {
+    if (Boolean(localStorage.getItem("token"))) {
+      navigate(router.todos);
+    }
+  }, []);
+
   return (
     <form onSubmit={onSubmitForm}>
       <input
