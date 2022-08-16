@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import signinAPI from "../API/signinAPI";
 import signupAPI from "../API/signupAPI";
+import router from "../router";
 
 interface ISigninForm {
   submit: string;
@@ -10,25 +12,32 @@ interface ISigninForm {
 const SigninForm = ({ submit, type }: ISigninForm) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState<undefined | string>(undefined);
+
+  const navigate = useNavigate();
 
   const onSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (type === "SIGN_IN") {
       const [token, errorMsg] = await signinAPI(email, password);
-      if (token) localStorage.setItem("token", token);
+      if (token) setToken(token);
       if (errorMsg) window.alert(errorMsg);
     }
 
     if (type === "SIGN_UP") {
-      const [token, error] = await signupAPI(email, password);
-      if (token) {
-        localStorage.setItem("token", token);
-      } else if (error) {
-        window.alert(error);
-      }
+      const [token, errorMsg] = await signupAPI(email, password);
+      if (token) setToken(token);
+      if (errorMsg) window.alert(errorMsg);
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      localStorage.setItem("token", token);
+      navigate(router.todos);
+    }
+  }, [token]);
 
   return (
     <form onSubmit={onSubmitForm}>
