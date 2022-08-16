@@ -1,9 +1,9 @@
-import * as React from "react";
+import React, { useState } from "react";
 import signinAPI from "../API/signinAPI";
 
 const Signin = () => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const onSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     const [token, error] = await signinAPI(email, password);
@@ -20,7 +20,11 @@ const Signin = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <input type="submit" value="Sign in" disabled={true} />
+      <input
+        type="submit"
+        value="Sign in"
+        disabled={!email.includes("@") || password.length < 8}
+      />
     </form>
   );
 };
