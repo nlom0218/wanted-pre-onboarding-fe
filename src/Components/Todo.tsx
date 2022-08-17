@@ -86,8 +86,12 @@ const Todo = ({ id, todo, isCompleted, token, getTodo }: ITodo) => {
     getTodo();
   };
 
+  const onMouseLeave = () => {
+    if (isEdit) setIsEdit(false);
+  };
+
   return (
-    <Container>
+    <Container onMouseLeave={onMouseLeave}>
       <div>{isCompleted ? <BsCheck2Square /> : <BsSquare />}</div>
       <div>
         <Input
