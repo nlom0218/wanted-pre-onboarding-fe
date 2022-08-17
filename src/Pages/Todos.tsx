@@ -8,8 +8,9 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-  margin-top: 100px;
+  margin-top: 80px;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export interface ITodos {

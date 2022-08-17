@@ -19,9 +19,6 @@ const Form = styled.form`
     border: 1px solid #dcaf73;
     background-color: #e7c089;
     color: #272727;
-    ::placeholder {
-      color: #6b6b6b;
-    }
   }
   input[type="submit"] {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
