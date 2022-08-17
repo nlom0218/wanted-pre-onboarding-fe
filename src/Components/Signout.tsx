@@ -1,6 +1,8 @@
 import React from "react";
 import { FaSignOutAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import router from "../router";
 
 const Container = styled.div`
   position: fixed;
@@ -12,8 +14,13 @@ const Container = styled.div`
 `;
 
 const Signout = () => {
+  const navigate = useNavigate();
+  const onClickSignout = () => {
+    localStorage.removeItem("token");
+    navigate(router.signin);
+  };
   return (
-    <Container>
+    <Container onClick={onClickSignout}>
       <FaSignOutAlt />
     </Container>
   );
