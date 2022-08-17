@@ -5,6 +5,32 @@ import signinAPI from "../API/signinAPI";
 import signupAPI from "../API/signupAPI";
 import router from "../router";
 
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  input {
+    margin-bottom: 20px;
+  }
+  input[placeholder] {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #dcaf73;
+    background-color: #e7c089;
+    color: #272727;
+    ::placeholder {
+      color: #6b6b6b;
+    }
+  }
+  input[type="submit"] {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 10px;
+    background-color: #e5a852;
+    border-radius: 10px;
+  }
+`;
+
 interface ISigninForm {
   submit: string;
   type: "SIGN_IN" | "SIGN_UP";
@@ -47,7 +73,7 @@ const SigninForm = ({ submit, type }: ISigninForm) => {
   }, []);
 
   return (
-    <form onSubmit={onSubmitForm}>
+    <Form onSubmit={onSubmitForm}>
       <input
         type="text"
         value={email}
@@ -67,7 +93,7 @@ const SigninForm = ({ submit, type }: ISigninForm) => {
         value={submit}
         disabled={!email.includes("@") || password.length < 8}
       />
-    </form>
+    </Form>
   );
 };
 

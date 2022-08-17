@@ -136,6 +136,13 @@ html {
 body {
     background-color: #eacda3;
 }
+input {
+-webkit-appearance : none;
+-moz-appearance:none;
+appearance:none;
+outline-style:none;
+border: none;
+}
 `;
 
 export default GlobalStyle;
