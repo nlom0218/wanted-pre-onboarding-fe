@@ -11,6 +11,7 @@ export default styled.div`
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
+    text-transform: uppercase;
   }
 
   .sign_contents {
