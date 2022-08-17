@@ -1,47 +1,68 @@
-# Getting Started with Create React App
+# Wanted Pre Onboarding FE
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 원티드 프리온보딩 프론트앤드 과제
 
-## Available Scripts
+- [원티드 프리온보딩 선밸과제 바로가기](https://github.com/walking-sunset/selection-task)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## /home
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+`Go to Sign in` 버튼을 눌러 로그인 화면으로 이동
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![home](/img/home.png)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## /signin, /signup
 
-### `npm run build`
+로그인 또는 회원가입을 할 수 있음
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![signin](/img/signin.png)
+![signup](/img/signup.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 유효성 검사가 통과되지 않으면 버튼 비활성화
+- `회원가입하기`, `로그인하러가기`를 눌러 해당 페이지로 이동
+- 로그인 실패 시 알림 창
+  ![fail signin](/img//signin2.png)
+- 회원가입 실패 시 알림 창
+  ![fail signup](/img/signup2.png)
+- 로그인 및 회원가입 성공시 로컬스토리지에 token 저장 및 /todos로 리다이렉트
+  ![user token](/img/usertoken.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## /todos
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### todo 등록하기
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+input에 todo 작성하고 앤터 또는 오른쪽 아이콘 클릭하면 투두가 등록됨
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![register todo](/img/registertodo.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+---
 
-## Learn More
+### todo 목록
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+각각의 투두가 박스 형식으로 나타남
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# wanted-pre-onboarding-fe
+![todo list](/img/todolist.png)
+
+---
+
+### todo 수정하기
+
+- `Eidt` 버튼을 눌러 수정 모드 활성화
+- `Cancel` 버튼을 눌르거나 마우스를 밖으로 보내면 수정 모드 비활성화
+
+![todo edit](/img/todoEdit.png)
+
+---
+
+### todo 삭제하기
+
+- `Delete` 버튼을 눌러 삭제
+
+아래는 "투두 등록하기 수정하기" 목록을 삭제한 사진
+
+![todo delete](/img/deleteTodo.png)
