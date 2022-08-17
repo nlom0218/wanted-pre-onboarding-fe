@@ -21,13 +21,13 @@
 ![signin](/img/signin.png)
 ![signup](/img/signup.png)
 
-- 유효성 검사가 통과되지 않으면 버튼 비활성화
-- `회원가입하기`, `로그인하러가기`를 눌러 해당 페이지로 이동
-- 로그인 실패 시 알림 창
+- 유효성 검사가 통과되지 않으면 버튼 비활성화.
+- `회원가입하기`, `로그인하러가기`를 눌러 해당 페이지로 이동.
+- 로그인 실패 시 알림 창.  
   ![fail signin](/img//signin2.png)
-- 회원가입 실패 시 알림 창
+- 회원가입 실패 시 알림 창.  
   ![fail signup](/img/signup2.png)
-- 로그인 및 회원가입 성공시 로컬스토리지에 token 저장 및 /todos로 리다이렉트
+- 로그인 및 회원가입 성공시 로컬스토리지에 token 저장 및 /todos로 리다이렉트.  
   ![user token](/img/usertoken.png)
 
 ---
