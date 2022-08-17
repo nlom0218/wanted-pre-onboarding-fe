@@ -144,6 +144,9 @@ appearance:none;
 outline-style:none;
 border: none;
  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     ::placeholder {
+      color: #6b6b6b;
+    }
 }
 `;
 

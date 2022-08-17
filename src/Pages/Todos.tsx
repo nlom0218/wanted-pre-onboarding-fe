@@ -4,6 +4,14 @@ import { useNavigate } from "react-router-dom";
 import router from "../router";
 import Todo from "../Components/Todo";
 import CreateTodo from "../Components/CreateTodo";
+import styled from "styled-components";
+
+const Container = styled.div`
+  display: flex;
+  margin-top: 80px;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export interface ITodos {
   id: number;
@@ -34,7 +42,7 @@ const Todos = () => {
   }, []);
 
   return (
-    <div>
+    <Container>
       <CreateTodo token={token} getTodo={getTodo} />
       <div>
         {todos &&
@@ -44,7 +52,7 @@ const Todos = () => {
             );
           })}
       </div>
-    </div>
+    </Container>
   );
 };
 
