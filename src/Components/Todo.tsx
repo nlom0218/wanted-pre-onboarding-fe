@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import deleteTodoAPI from "../API/deleteTodoAPI";
 import updateTodoAPI from "../API/updateTodoAPI";
-import { ITodos } from "../Pages/Todos";
 
-const Todo = ({ id, todo, isCompleted, token }: ITodos) => {
+interface ITodo {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  token: string | null;
+  getTodo: () => {};
+}
+
+const Todo = ({ id, todo, isCompleted, token, getTodo }: ITodo) => {
   const [content, setContent] = useState(todo);
   const [isEdit, setIsEdit] = useState(false);
 
@@ -21,12 +29,12 @@ const Todo = ({ id, todo, isCompleted, token }: ITodos) => {
     setContent(todo);
   };
 
-  // const deleteTodo = async () => {
-  //   await deleteTodoAPI(
-  //     457,
-  //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbGxkZGRvQGhlbGxvLmNvbSIsInN1YiI6MjU1LCJpYXQiOjE2NjA0MDI4ODQsImV4cCI6MTY2MTAwNzY4NH0.dkQigOXKmob1924an2QhZZRa14OMWkpnjCNgZ8o9f8o"
-  //   );
-  // };
+  const onClickDelBtn = async () => {
+    if (!token) return;
+    await deleteTodoAPI(id, token);
+    getTodo();
+  };
+
   return (
     <div>
       <div>{isCompleted ? "완료" : "미완료"}</div>
@@ -40,6 +48,9 @@ const Todo = ({ id, todo, isCompleted, token }: ITodos) => {
       <div>
         <button onClick={onClickEditBtn}>수정하기</button>
         {isEdit && <button onClick={onClickCancelBtn}>취소하기</button>}
+      </div>
+      <div>
+        <button onClick={onClickDelBtn}>삭제하기</button>
       </div>
     </div>
   );
