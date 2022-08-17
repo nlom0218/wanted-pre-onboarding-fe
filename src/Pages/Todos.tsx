@@ -10,6 +10,7 @@ export interface ITodos {
   todo: string;
   isCompleted: boolean;
   userId: number;
+  token: string | null;
 }
 
 const Todos = () => {
@@ -39,7 +40,7 @@ const Todos = () => {
       <div>
         {todos &&
           todos.map((item) => {
-            return <Todo key={item.id} {...item} />;
+            return <Todo key={item.id} {...item} token={token} />;
           })}
       </div>
     </div>
