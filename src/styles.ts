@@ -135,6 +135,7 @@ html {
 }
 body {
     background-color: #eacda3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 input {
 -webkit-appearance : none;
@@ -142,6 +143,7 @@ input {
 appearance:none;
 outline-style:none;
 border: none;
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 `;
 

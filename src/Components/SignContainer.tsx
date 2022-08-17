@@ -15,7 +15,7 @@ export default styled.div`
   }
 
   .sign_contents {
-    color: #2b2b2b;
+    color: #5e5e5e;
     font-size: 14px;
   }
 
