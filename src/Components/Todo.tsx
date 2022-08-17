@@ -16,6 +16,9 @@ const Container = styled.div`
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   transition: transform 0.3s linear;
+  svg {
+    cursor: pointer;
+  }
   :hover {
     transform: scale(1.05);
   }
@@ -63,6 +66,7 @@ interface ITodo {
 
 const Todo = ({ id, todo, isCompleted, token, getTodo }: ITodo) => {
   const [content, setContent] = useState(todo);
+  const [checked, isChecked] = useState(isCompleted);
   const [isEdit, setIsEdit] = useState(false);
 
   const onClickEditBtn = async () => {
@@ -90,9 +94,17 @@ const Todo = ({ id, todo, isCompleted, token, getTodo }: ITodo) => {
     if (isEdit) setIsEdit(false);
   };
 
+  const onClickisCompleted = async () => {
+    if (!token) return;
+    await updateTodoAPI(id, content, token, !isCompleted);
+    isChecked((prev) => !prev);
+  };
+
   return (
     <Container onMouseLeave={onMouseLeave}>
-      <div>{isCompleted ? <BsCheck2Square /> : <BsSquare />}</div>
+      <div onClick={onClickisCompleted}>
+        {checked ? <BsCheck2Square /> : <BsSquare />}
+      </div>
       <div>
         <Input
           value={content}
