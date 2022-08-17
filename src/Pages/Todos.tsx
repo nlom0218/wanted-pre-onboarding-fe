@@ -39,7 +39,9 @@ const Todos = () => {
       <div>
         {todos &&
           todos.map((item) => {
-            return <Todo key={item.id} {...item} />;
+            return (
+              <Todo key={item.id} {...item} token={token} getTodo={getTodo} />
+            );
           })}
       </div>
     </div>
