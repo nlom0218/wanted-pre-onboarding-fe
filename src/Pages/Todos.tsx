@@ -5,6 +5,7 @@ import router from "../router";
 import Todo from "../Components/Todo";
 import CreateTodo from "../Components/CreateTodo";
 import styled from "styled-components";
+import Signout from "../Components/Signout";
 
 const Container = styled.div`
   display: flex;
@@ -43,6 +44,7 @@ const Todos = () => {
 
   return (
     <Container>
+      <Signout />
       <CreateTodo token={token} getTodo={getTodo} />
       <div>
         {todos &&
