@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import deleteTodoAPI from "../API/deleteTodoAPI";
 import updateTodoAPI from "../API/updateTodoAPI";
 import { BsCheck2Square, BsSquare } from "react-icons/bs";
@@ -65,6 +65,7 @@ interface ITodo {
 }
 
 const Todo = ({ id, todo, isCompleted, token, getTodo }: ITodo) => {
+  const input = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState(todo);
   const [checked, isChecked] = useState(isCompleted);
   const [isEdit, setIsEdit] = useState(false);
@@ -74,8 +75,10 @@ const Todo = ({ id, todo, isCompleted, token, getTodo }: ITodo) => {
       if (!token) return;
       await updateTodoAPI(id, content, token, isCompleted);
       setIsEdit(false);
+      getTodo();
     } else {
       setIsEdit(true);
+      input.current?.focus();
     }
   };
 
@@ -111,6 +114,7 @@ const Todo = ({ id, todo, isCompleted, token, getTodo }: ITodo) => {
           readOnly={!isEdit}
           onChange={(e) => setContent(e.target.value)}
           isEdit={isEdit}
+          ref={input}
         />
       </div>
       <BtnContainer>
