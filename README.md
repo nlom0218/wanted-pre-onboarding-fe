@@ -66,3 +66,12 @@ input에 todo 작성하고 앤터 또는 오른쪽 아이콘 클릭하면 투두
 아래는 "투두 등록하기 수정하기" 목록을 삭제한 사진
 
 ![todo delete](/img/deleteTodo.png)
+
+---
+
+### todo 완료하기
+
+- 투두 우측 상단에 있는 박스를 눌러 완료하기
+- 다시 누르면 미완료로 바뀜
+
+![todo completed](/img/todocom.png)
